@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+    webapp:
+        build: c:/Dev/docker-hub/docker-practical
+        container_name: test1
+        networks:
+            selenium_test: {}
+        ports: 
+            - "80:80"
+              
+    chrome:
+        image: selenium/node-chrome:3.14.0-gallium
+        container_name: hub-chrome
+        networks:
+            selenium_test: {}
+        volumes:
+            - "/dev/shm:/dev/shm"
+        depends_on:
+            - selenium-hub
+        environment:
+            HUB_HOST: test-hub
+
+    firefox:
+        image: selenium/node-firefox:3.14.0-gallium
+        container_name: hub-firefox
+        networks:
+            selenium_test: {}
+        volumes:
+            - /dev/shm:/dev/shm
+        depends_on:
+            - selenium-hub
+        environment:
+            HUB_HOST: test-hub
+ 
+    selenium-hub:
+        image: selenium/hub:3.14.0-gallium
+        container_name: test-hub
+        networks:
+            selenium_test: {}
+        ports:
+            - "4444:4444"
+    
+    selenium-tests:
+        build: c:/Dev/docker-hub/docker-test2
+        container_name: selenium-tests2
+        networks:
+            selenium_test: {}
+        depends_on:
+            - selenium-hub
+            - webapp
+            
+networks:
+    selenium_test:
+        driver: bridge
