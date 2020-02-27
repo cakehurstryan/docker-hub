@@ -2,7 +2,7 @@ version: "3"
 
 services:
     webapp:
-        build: c:/Dev/docker-hub/docker-practical
+        build: ./docker-practical
         container_name: test1
         networks:
             selenium_test: {}
@@ -42,7 +42,7 @@ services:
             - "4444:4444"
     
     selenium-tests:
-        build: c:/Dev/docker-hub/docker-test2
+        build: ./docker-test2
         container_name: selenium-tests2
         networks:
             selenium_test: {}
