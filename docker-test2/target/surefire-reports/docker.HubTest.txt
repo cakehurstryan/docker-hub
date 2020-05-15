@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: docker.HubTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.053 s <<< FAILURE! - in docker.HubTest
+docker.HubTest  Time elapsed: 4.051 s  <<< ERROR!
+org.openqa.selenium.remote.UnreachableBrowserException: 
+Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'WS01238', ip: '192.168.38.28', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: RemoteWebDriver
+	at docker.HubTest.setup(HubTest.java:23)
+Caused by: java.net.UnknownHostException: test-hub
+	at docker.HubTest.setup(HubTest.java:23)
+
